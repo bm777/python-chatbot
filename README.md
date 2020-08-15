@@ -34,4 +34,4 @@ You should have a virtual environment installed on your machine.
 python manages.py makemigrations chatbot_app
 python manages.py makemigrations chatbot_app
 python manages.py runserver
-```
+``
