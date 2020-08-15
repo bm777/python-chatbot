@@ -29,9 +29,9 @@ You should have a virtual environment installed on your machine.
 
 
 ### migrtion of database
-``bash
+```bash
 # python3
 python manages.py makemigrations chatbot_app
 python manages.py makemigrations chatbot_app
 python manages.py runserver
-``
+```
