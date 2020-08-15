@@ -10,7 +10,7 @@ class DataGen():
         self.name = "Class for population of database"
         self.client = MongoClient("mongodb://localhost:27017")
         self.db = self.client["phonesDB"]
-        self.col = self.db["phone4"]
+        self.col = self.db["phone1"]
 
 
 
@@ -151,6 +151,7 @@ if __name__ == '__main__':
     dg = DataGen()
     print("population of database ....")
     dg.populate()
+    print("====================\npopulation generated ....")
     dg.show()
     #q = input("Hi, enter a querry about your phone. \n-> ")
 

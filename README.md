@@ -19,14 +19,18 @@ This chatbot could be used for online ecommerce website(specially for iphone, sa
 ### Installation
 
 #### Pip
-you should have pip installed on your machine. To do so, the guide is : [HERE](https://youtu.be/Tl3q8Wm0jvI) 
+you should have pip installed on your machine. To do so, the guide is : [HERE](https://youtu.be/Tl3q8Wm0jvI)
 ```bash
 #
 pip install -r requirements.txt
 
 ```
-You should have a virtual environment installed on your machine. 
-
+You should have a virtual environment installed on your machine.
+```bash
+# random generation of data on mongo Batabase.
+cd chatbot_app
+python test.py
+```
 
 ### migrtion of database
 ```bash
