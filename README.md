@@ -9,7 +9,7 @@ This chatbot could be used for online ecommerce website(specially for iphone, sa
 - [x] `Jquery` downloaded
 - [x] `bootstrap` downloaded
 - [x] `CSS` downloaded
-- [x] [{Pymongo](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/) for ubuntu 18.04
+- [x] [Pymongo](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/) for ubuntu 18.04
 - [] GPU accelerated, but not necessary
 - [x] MIT License
 

@@ -111,3 +111,4 @@ if __name__ == '__main__':
 
     print("mongo db...")
     query = Query()
+    query.search()
