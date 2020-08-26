@@ -30,6 +30,7 @@ You should have a virtual environment installed on your machine.
 # random generation of data on mongo Batabase.
 cd chatbot_app
 python test.py
+add 'sudo service mongod start' on .bashrc 
 ```
 
 ### migrtion of database
