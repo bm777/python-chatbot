@@ -5,8 +5,12 @@ from chatterbot.trainers import ChatterBotCorpusTrainer
 bot = ChatBot(name="PyBot",
               #read_only=True,
               storage_adapter='chatterbot.storage.MongoDatabaseAdapter',
-              logic_adapters=['chatterbot.logic.MathematicalEvaluation',
-                              'chatterbot.logic.BestMatch',
+              logic_adapters=[
+              {
+                        'import_path' : 'chatterbot.logic.MathematicalEvaluation'
+              }
+
+
                               #'chatterbot.logic.TimeLogicAdapter'
                               ],
               database_uri='mongodb://localhost:27017/chatterbot-database')
@@ -51,7 +55,7 @@ talk_4 = ['feedback et avis',
 
 #=============== create and train the bot by writing an instance of ListTraine
 model = ListTrainer(bot)
-for item in (GREETINGS, talk_1, talk_2, talk_3, talk_4):
+for item in (GREETINGS, talk_1, talk_2, talk_3, question):
     model.train(item)
 # corpus = ChatterBotCorpusTrainer(bot)
 # corpus.train('chatterbot.corpus.engish')
