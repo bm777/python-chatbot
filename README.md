@@ -1,10 +1,11 @@
-# chatbot for e commerce using django
+# chatbot for e-Commerce using django
 
 This repo provide a clean implementation of chatbot using django and web stuff and using all the best practices.
-This chatbot could be used for online ecommerce website(specially for iphone, samsung and redmi phone). This is just prototype. you can ocntribute and fork it to change as you want.
+This chatbot could be used for online ecommerce website(specially for iphone, samsung and redmi phone). This is just prototype. you can contribute and fork it to change as you want.
 
 ## Key Features
 
+- [x] `TensorFlow 1.x` downloaded with pre-trained [model](https://drive.google.com/file/d/1mVWFScBHFeA7oVxQzWb8QbKfTi3TToUr/view?usp=sharing)
 - [x] Django framework
 - [x] `Jquery` downloaded
 - [x] `bootstrap` downloaded
@@ -30,7 +31,7 @@ You should have a virtual environment installed on your machine.
 # random generation of data on mongo Batabase.
 cd chatbot_app
 python test.py
-add 'sudo service mongod start' on .bashrc 
+add 'sudo service mongod start' on .bashrc or 'service mongod start' to avoid password on bashrc file. :)
 ```
 
 ### migrtion of database
