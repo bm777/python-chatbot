@@ -127,6 +127,20 @@ def get_ner(query):
 
     return result
 
+def nl(q):
+    training()
+    q = q.split(" ")
+    for n, words in enumerate(q):
+        if words not in stopwords:
+            print(words.lower(),spellCheck(words.lower()))
+            temp = spellCheck(words.lower())
+            if len(temp) > 0 and words.lower() not in temp:
+                q[n] = list(temp)[0]
+            else:
+                q[n] = ""
+        print(q)
+        return q
+
 def process_NL(q5):
 	training()
 	q5 = q5.split(" ")

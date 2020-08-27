@@ -7,6 +7,7 @@ from tensorflow import Session
 import tensorflow_core
 from .models import Conversation
 from .Query import Query
+from chatbot_app.ner import nl
 from chatbot_app.chatbot.botpredictor import BotPredictor
 from chatbot_app.settings import PROJECT_ROOT
 
@@ -43,16 +44,22 @@ def Post(request):
         with Session() as sess:
             predictor = BotPredictor(sess, corpus_dir=corp_dir, knbase_dir=knbs_dir, result_dir=res_dir, result_file='basic')
             session_id = predictor.session_data.add_session()
-            tmp = predictor.predict(session_id, query)
-            response = tmp
-            print("====",type(response))
-            #response = Query().search(query)
+            words = ['phone', 'iphone', 'samsung', 'telephone', 'xiaomi', 'tecno', 'processor', 'memory', 'camera', 'storage']
+
+            # =========== test if word in words exist in tmp search
+            tmp = nl(query)
+            for w in tmp:
+                if w in words:
+                    response = Query().search(query)
+                    response = [str(elt)+"<br/>" for elt in response]
+                    return JsonResponse({'response': "<strong>Bot -> </strong>We have :" + str(response), 'query': "<strong>Me -> </strong>"+query})
+
+            response = predictor.predict(session_id, query)
+
             if response == None:
                 return JsonResponse({'response': "<strong>Bot -> </strong>" + "None object found or I didn't understood your query, oups :(", 'query': "<strong>Me -> </strong>"+query})
-            #response = [str(elt)+"<br/>" for elt in response]
-            print("query :: ", query)
+
             print('===========')
-            #c = Conversation(query=query, response=response)
 
             return JsonResponse({'response': "<strong>Bot -> </strong>" + response, 'query': "<strong>Me -> </strong>"+query})
     else:
