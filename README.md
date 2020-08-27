@@ -6,11 +6,11 @@ This chatbot could be used for online ecommerce website(specially for iphone, sa
 ## Key Features
 
 - [x] `TensorFlow 1.x` downloaded with pre-trained [model](https://drive.google.com/file/d/1mVWFScBHFeA7oVxQzWb8QbKfTi3TToUr/view?usp=sharing)
-- [x] Django framework
-- [x] `Jquery` downloaded
-- [x] `bootstrap` downloaded
-- [x] `CSS` downloaded
-- [x] [Pymongo](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/) for ubuntu 18.04
+- [x] `Django` framework
+- [x] `Jquery` used
+- [x] `bootstrap` used
+- [x] `CSS` used
+- [x] `[Pymongo](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/)` for ubuntu 18.04
 - [] GPU accelerated, but not necessary
 - [x] MIT License
 
