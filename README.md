@@ -11,7 +11,7 @@ This chatbot could be used for online ecommerce website(specially for iphone, sa
 - [x] `bootstrap` used
 - [x] `CSS` used
 - [x] [Pymongo](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/) for ubuntu 18.04
-- [] GPU accelerated, but not necessary
+- [ ] GPU accelerated, but not necessary
 - [x] MIT License
 
 
