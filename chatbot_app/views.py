@@ -1,10 +1,13 @@
+from __future__ import absolute_import as _absolute_import
+from __future__ import division as _division
+
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import requests, os, re
 
 from tensorflow import Session
-import tensorflow_core
+#import tensorflow_core
 from .models import Conversation
 from .Query import Query
 from chatbot_app.ner import nl
@@ -44,22 +47,34 @@ def Post(request):
         with Session() as sess:
             predictor = BotPredictor(sess, corpus_dir=corp_dir, knbase_dir=knbs_dir, result_dir=res_dir, result_file='basic')
             session_id = predictor.session_data.add_session()
-            words = ['phone', 'iphone', 'samsung', 'telephone', 'xiaomi', 'tecno', 'processor', 'memory', 'camera', 'storage']
+            stop_words_search = ['phone', 'iphone', 'samsung', 'telephone', 'xiaomi', 'tecno', 'processor', 'memory', 'camera', 'storage']
+            stop_words_meeting = ['meeting', 'appointment', 'rendez-vous', 'rendez vous']
 
-            # =========== test if word in words exist in tmp search
+            # =========== generate token of sentences =========================
             tmp = nl(query)
-            for w in tmp:
-                if w in words:
-                    response = Query().search(query)
-                    response = [str(elt)+"<br/>" for elt in response]
-                    return JsonResponse({'response': "<strong>Bot -> </strong>We have :" + str(response), 'query': "<strong>Me -> </strong>"+query})
 
+            # =========== test if word in words exist in tmp search ===========
+            for w in tmp:
+
+                if w in stop_words_search:
+                    response = Query().search(query)
+                    response = ['<br/><button class="btn btn-outline-primary>{}</button>'.format(elt) for elt in response]
+                    print('=============')
+                    return JsonResponse({'response': "<strong>Bot -> </strong>About {}, We have :{} <br />wich one are interested in?".format(w, response) , 'query': "<strong>Me -> </strong>"+query})
+
+            # ============ test if word in words exist in tmp search for meeting======
+            for w in tmp:
+                if w in stop_words_meeting:
+                    #response = Query().search(query)
+                    response = ['<br/><button class="btn btn-primary>{}</button>'.format(elt) for elt in ["Monday: 8:00AM - 6:30PM", "Tuesday: 8:00AM - 6:30PM", "Wednesday: 8:00AM - 6:30PM", "Thursday: 8:00AM - 6:30PM", "Friday: 8:00AM - 6:30PM", "Saturady: 9:00AM - 2:30PM"]]
+                    print('=============')
+                    return JsonResponse({'response': "<strong>Bot -> </strong>About {}, We are opened :{} <br />wich day are interested in?".format(w, response) , 'query': "<strong>Me -> </strong>"+query})
             response = predictor.predict(session_id, query)
 
             if response == None:
-                return JsonResponse({'response': "<strong>Bot -> </strong>" + "None object found or I didn't understood your query, oups :(", 'query': "<strong>Me -> </strong>"+query})
+                return JsonResponse({'response': "<strong>Bot -> </strong>" + "I didn't understood your query, oups :(", 'query': "<strong>Me -> </strong>"+query})
 
-            print('===========')
+
 
             return JsonResponse({'response': "<strong>Bot -> </strong>" + response, 'query': "<strong>Me -> </strong>"+query})
     else:
