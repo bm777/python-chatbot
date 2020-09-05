@@ -1,0 +1,21 @@
+#### DESC ####
+
+Request form:
+    -query of user from input's form.
+
+
+
+Response form:
+  -chatbot function which return talkative answer to user via JsonResponse
+  -chatbot function which return non-talkative answer to user via JsonResponse after retrieved data from Mongodb using pymongo.
+
+
+  Intermediate
+    -ajax which append li element on ul tag [home.html] from Response form.
+
+
+
+-Pymongo for storage
+-python as backend for django and  ( to read tensorflow model and enable talkative function with user.)
+-django for interface or widget
+-jQuery and Ajax for the apending data

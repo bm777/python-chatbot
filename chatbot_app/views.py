@@ -1,13 +1,10 @@
-from __future__ import absolute_import as _absolute_import
-from __future__ import division as _division
-
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import requests, os, re
 
 from tensorflow import Session
-#import tensorflow_core
+import tensorflow_core
 from .models import Conversation
 from .Query import Query
 from chatbot_app.ner import nl
